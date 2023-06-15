@@ -3,13 +3,31 @@
 using namespace std;
 
 class Human {
-public:
+private:
     string name;
+public:
+    string GetName() {
+        return name;
+    }
+    void SetName(string name) {
+        this->name = name;
+    }
 };
 
 class Student : public Human {
 public:
     string group;
+    void Learn() {
+        cout << "Я учусь!" << endl;
+    }
+};
+
+class ExtramuralStudent : public Human {
+public:
+    string group;
+    void Learn() {
+        cout << "Я заочник!" << endl;
+    }
 };
 
 class Professor : public Human {
@@ -18,12 +36,34 @@ public:
 };
 
 int main() {
+    setlocale(LC_ALL, "Russian");
 
+    Student st;
+    st.Learn();
+    st.SetName("Алик");
+    cout << st.GetName() << endl;
+
+    ExtramuralStudent extraSt;
+    extraSt.Learn();
+    extraSt.SetName("Гоша");
+    cout << extraSt.GetName() << endl;
+
+    Professor pr;
 
     return 0;
 }
 
-// РєР»Р°СЃСЃ РѕС‚ РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРёСЃС…РѕРґРёС‚ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ РЅР°Р·С‹РІР°РµС‚СЃСЏ Р±Р°Р·РѕРІС‹Рј РёР»Рё СЂРѕРґРёС‚РµР»СЊСЃРєРёРј
-// РєР»Р°СЃСЃ РєРѕС‚РѕСЂРѕР№ СѓРЅР°СЃР»РµРґРѕРІР°Р»СЃСЏ РѕС‚ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° РїСЂРѕРёР·РІРѕРґРЅС‹Р№, РґРѕС‡РµСЂРЅРёР№, РїРѕС‚РѕРјРѕРє РёР»Рё РЅР°СЃР»РµРґРЅРёРє
+// класс от которого происходит наследование называется базовым или родительским
+// класс которой унаследовался от базового класса производный, дочерний, потомок или наследник
 
-// СѓРЅР°СЃР»РµРґСѓРµРј РєР»Р°СЃСЃ Human РІ РєР»Р°СЃСЃР°С… Student Рё Professor С‡РµСЂРµР· РјРѕРґРёС„РёРєР°С‚РѕСЂ : public Human
+// унаследуем класс Human в классах Student и Professor через модификатор : public Human
+// мы видим что поле name унаследовалось от класса Human
+
+// создадим новый класс ExtramuralStudent и унаследуемся от класса Human
+// реализуем методы Learn() в классах Student и ExtramuralStudent.
+// при вызове этих методов мы видим, что у каждого класса эти методы свои.
+
+// сделаем приватным поле name в классе Human
+// напишим геттер и сеттер для этого поля
+// Для объектов st и extraSt вызовем методы геттер и сеттер 
+// для поля name из класса Human
