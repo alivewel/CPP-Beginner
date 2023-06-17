@@ -3,12 +3,17 @@
 using namespace std;
 
 /*
-*    Полиморфизм. Виртуальные функции. virtual. override.
+*    Абстрактный класс. Чисто виртуальные функции. virtual. override.
 */
 
-class Gun {
+class Weapon {
 public:
-    virtual void Shoot() {
+    virtual void Shoot() = 0; // такая запись обозначает абстрактный класс
+};
+
+class Gun : public Weapon {
+public:
+    void Shoot() override {
         cout << "Bang!" << endl;
     }
 };
@@ -20,17 +25,24 @@ public:
     }
 };
 
-class Bazooka : public Gun {
+class Bazooka : public Weapon {
 public:
     void Shoot() override {
         cout << "BADABOOM!" << endl;
     }
 };
 
+class Knife : public Weapon {
+public:
+    void Shoot() override {
+        cout << "VJUH!" << endl;
+    }
+};
+
 class Player {
 public:
-    void Shoot(Gun *gun) {
-        gun->Shoot();
+    void Shoot(Weapon *weapon) { // теперь на вход принимаем указатель на абстрактный класс Weapon
+        weapon->Shoot();
     }
 };
 
@@ -41,11 +53,13 @@ int main() {
     Gun gun;
     SubmachineGun machineGun;
     Bazooka bazooka;
+    Knife knife;
 
     Player player;
     player.Shoot(&gun);
     player.Shoot(&machineGun);
     player.Shoot(&bazooka);
+    player.Shoot(&knife);
 
     // Gun *weapon = &machineGun;
     // weapon->Shoot();
