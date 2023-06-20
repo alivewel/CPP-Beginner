@@ -48,8 +48,25 @@ private:
 };
  
 int main() {
-    Messenger telegram{Message{"Hello Word"}};
-    telegram.sendMessage();
+    // Messenger telegram{Message{"Hello Word"}};
+    // telegram.sendMessage();
+
+    Message obj1("Hello"); // Создание объекта с помощью конструктора
+    Message obj2(std::move(obj1)); // Вызов конструктора перемещения
+
+    // std::cout << "message obj1 "  << obj1.getText() << std::endl;
+    std::cout << "message obj2 "  << obj2.getText() << std::endl;
+    std::cout << "message obj1 "  << obj1.getText() << std::endl;
+    
+    // if (obj1.text == nullptr) {
+    // if (obj1.getText() != nullptr) {
+    // std::cout << "obj1 no longer exists or is in an invalid state" << std::endl;
+    // } else {
+    //     std::cout << "obj1 still exists" << std::endl;
+    // }
+
+
+
 }
 
 // Здесь параметр moved представляет перемещаемый объект. 
