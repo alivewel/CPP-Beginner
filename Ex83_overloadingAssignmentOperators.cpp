@@ -57,7 +57,7 @@ public:
         // после этого нам нужно пробежаться по ячеек нового объекта и скопировать старые ячейки
         cout << "Вызвался конструктор копирования " << this << endl;
     }
-    MyClass2 &operator = (const MyClass2 &other) {
+    MyClass2 &operator =(const MyClass2 &other) {
         cout << "Вызвался оператор = " << this << endl;
         this->Size = other.Size;  // нет данимаческой памяти, значит ничего чисть не нужно
         if (this->data != nullptr) { // на всякий случай сделаем проверку

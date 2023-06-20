@@ -30,10 +30,10 @@ public:
     //     }
     // }
     // можно написать гораздо проще
-    bool operator == (const Point &other) {
+    bool operator ==(const Point &other) {
         return this->x == other.x && this->y == other.y;
     }
-    bool operator != (const Point &other) {
+    bool operator !=(const Point &other) {
         return !(this->x == other.x && this->y == other.y);
     }
     void Print() {
