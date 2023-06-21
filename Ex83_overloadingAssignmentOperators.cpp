@@ -59,6 +59,9 @@ public:
     }
     MyClass2 &operator =(const MyClass2 &other) {
         cout << "Вызвался оператор = " << this << endl;
+        if (this == &other) {
+            return *this; // Проверка на самоприсваивание, этого не было в видео
+        }
         this->Size = other.Size;  // нет данимаческой памяти, значит ничего чисть не нужно
         if (this->data != nullptr) { // на всякий случай сделаем проверку
             delete[] data;

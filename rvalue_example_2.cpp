@@ -21,7 +21,7 @@ public:
     }
 
     ~MyClass() {
-        delete data;
+        delete data;    
         std::cout << "Destructor" << std::endl;
     }
 };
